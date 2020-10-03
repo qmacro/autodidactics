@@ -2,7 +2,7 @@ title: DJ Adams - Autodidactics
 email: qmacro@gmail.com
 description: >-
   Reserving the right to be wrong.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/autodidactics" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: qmacro
 github_username:  qmacro
