@@ -1,6 +1,6 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
 ---
+Hello, my name is DJ and this is 'autodidactics', a lightweight blog where I write about bits and pieces that I pick up from content created by other folks - in particular small things that I learn from studying the code they write. Find out more about me and the content I create over on my [home website][home-url].
+
+[home-url]: https://qmacro.org
