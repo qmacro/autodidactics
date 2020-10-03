@@ -2,7 +2,6 @@
 layout: post
 title:  "Using exec to jump"
 date:   2020-10-03 17:42:09 +0100
-categories: bash
 ---
 In [Mr Rob](https://rwx.gg)'s [dotfiles repo](https://gitlab.com/rwxrob/dotfiles/) there's a treasure trove of content that is very pleasant to peruse.
 
