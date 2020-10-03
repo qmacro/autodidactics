@@ -3,7 +3,7 @@ layout: post
 title:  "Using exec to jump"
 date:   2020-10-03 17:42:09 +0100
 ---
-In [Mr Rob](https://rwx.gg)'s [dotfiles repo](https://gitlab.com/rwxrob/dotfiles/) there's a treasure trove of content that is very pleasant to peruse.
+In [Mr Rob](https://rwx.gg)'s [dotfiles repo](https://gitlab.com/rwxrob/dotfiles/) (see [A new learning source for shell scripting](https://qmacro.org/2020/10/03/a-new-learning-source-for-shell-scripting/)) there's a treasure trove of content that is very pleasant to peruse.
 
 In one of his streams I saw him use `ix` and thereby discovered [ix.io](http://ix.io) - a simple pastebin. He uses his `ix` script to share code and other content, either from the command line or from within Vim directly. It's only 14 lines including comments, but I've learned stuff from it already.
 
