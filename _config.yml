@@ -6,9 +6,13 @@ baseurl: "/autodidactics" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: qmacro
 github_username:  qmacro
+author: DJ Adams
 
 # Build settings
+markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
 
+google_analytics: UA-17535311-5
+permalink: /:year/:month/:day/:title/
