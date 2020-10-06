@@ -3,7 +3,7 @@ layout: post
 title:  "Checking a command is available before use"
 date:   2020-10-04 18:25:09 +0100
 ---
-There's one final nugget in [Mr Rob](https://rwx.gg/)'s [`ix`](https://gitlab.com/rwxrob/dotfiles/-/blob/master/scripts/ix) script that I wanted to pick out. It's not earth shattering but still useful to have seen.
+_There's one final nugget in [Mr Rob](https://rwx.gg/)'s [`ix`](https://gitlab.com/rwxrob/dotfiles/-/blob/master/scripts/ix) script that I wanted to pick out. It's not earth shattering but still useful to have seen._
 
 At the end of the script, the URL generated from the newly created [ix.io](http://ix.io) pastebin is put into the X buffer (so that it can be pasted into other X applications). This is done via the [`xclip`](https://linux.die.net/man/1/xclip) command, but `xclip` is not installed everywhere, so the `ix` script checks that it is available before trying to use it:
 
@@ -20,4 +20,4 @@ Because the use of `xclip` here is right at the end of the script (by design, mo
 which xclip >/dev/null && echo "$url" | xclip
 {% endhighlight %}
 
-Anyway, worth knowing and having seen it, right? 
+Anyway, worth knowing and having seen it, right?
