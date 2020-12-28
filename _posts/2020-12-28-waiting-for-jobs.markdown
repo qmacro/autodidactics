@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Waiting for jobs"
+title:  "Waiting for jobs, and the concept of the shell"
 date:   2020-12-28 08:46:12 +0000
 ---
 _Bash's 'wait' builtin helps me understand Bash scripting as a language_
