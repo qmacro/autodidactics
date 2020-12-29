@@ -5,9 +5,9 @@ date:   2020-12-28 08:46:12 +0000
 ---
 _Bash's 'wait' builtin helps me understand Bash scripting as a language_
 
-I was browsing the [source code](https://github.com/RaymiiOrg/bash-http-monitoring/blob/master/srvmon.sh) of the [bash-http-monitoring](https://github.com/RaymiiOrg/bash-http-monitoring) project that had been shared on a social news site recently. The general idea was that it fired off a number of background web requests to run in parallel and eventually produce a report on the availability of various websites. Nice, neat and simple.
+I was browsing the source code of the main script in the [bash-http-monitoring](https://github.com/RaymiiOrg/bash-http-monitoring) project that had been shared on a social news site recently. The general idea was that it fired off a number of background web requests to run in parallel and eventually produce a report on the availability of various websites. Nice, neat and simple.
 
-In the main part of the project's `srvmon.sh` script, I saw this:
+In the main part of the project's `srvmon` script, I saw this:
 
 ```bash
 # Do the checks parallel
