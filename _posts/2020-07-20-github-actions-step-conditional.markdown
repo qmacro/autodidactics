@@ -8,7 +8,7 @@ _You can combine git diff exit codes and the POSIX `!` operator to control GitHu
 
 When defining a job step in GitHub Actions, you can specify a [condition](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#job-status-check-functions) that must be met for a job step to run (in a broadly similar way to how things were in Job Control Language). In my [profile repo's builder workflow](https://github.com/qmacro/qmacro/blob/03246248853b563bb6774697e7156bfb183e3f0a/.github/workflows/build.yml), I wanted only to proceed with a git commit step if there were actual changes that had been made in a previous step.
 
-<script id="asciicast-9MOvuplgIiWJvGDrDRvKvsBpb" src="https://asciinema.org/a/9MOvuplgIiWJvGDrDRvKvsBpb.js" async></script>
+<script id="asciicast-atp4JS1Ns25laK2PkByByc9uc" src="https://asciinema.org/a/atp4JS1Ns25laK2PkByByc9uc.js" async></script>
 
 Supplying the `--exit-code` option to [git diff](https://git-scm.com/docs/git-diff) makes it emit an exit code of 1 if there are differences, and 0 if not. This option is implicit in `--quiet`, too.
 
