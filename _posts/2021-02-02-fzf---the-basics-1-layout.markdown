@@ -60,4 +60,6 @@ Before we leave the Layout category, there's a couple of other options that can 
 
 **Next time**
 
-That's about it for what I've learned about controlling the appearance. There's actually plenty more on this in the [wiki](https://github.com/junegunn/fzf/wiki). Next time I'll take a look at a couple of `fzf` environment variables that control what command `fzf` uses, how that can be changed to affect what gets displayed (or not displayed) in the choice list, and more.
+That's about it for what I've learned about controlling the appearance. There's actually plenty more on this in the [wiki](https://github.com/junegunn/fzf/wiki).
+
+Note right now that there are 17688 entries in the list of choices presented to me. That's a lot, and far more than I'd ever actually want to select from. Next time I'll take a look at a couple of `fzf` environment variables, one of which controls what command `fzf` uses, and how that can be changed to affect what gets displayed (or not displayed) in the choice list, so I can address that large number of entries issue.
