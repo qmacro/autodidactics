@@ -1,6 +1,6 @@
 ---
 layout: post
-title: fzf - the basics part 2 - controlling the search results
+title: fzf - the basics part 2 - search results
 date: '2021-02-07 11:13:55'
 ---
 
