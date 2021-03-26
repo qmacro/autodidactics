@@ -22,7 +22,7 @@ Following this straightforward URL-space design, a deletion is possible thus:
 DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 ```
 
-Incidentally, I like the use of "owner" here - because a repo can belong to an individual GitHub account (such as [qmacro](https://github.com/qmacro) or an organisation (such as [SAP-samples](https://github.com/SAP-samples), and "owner" is a generic term that covers both situations and has the right semantics.
+Incidentally, I like the use of "owner" here - because a repo can belong to an individual GitHub account (such as [qmacro](https://github.com/qmacro)) or an organisation (such as [SAP-samples](https://github.com/SAP-samples)), and "owner" is a generic term that covers both situations and has the right semantics.
 
 **Requesting the workflow run information with `gh`**
 
