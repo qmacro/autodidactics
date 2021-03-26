@@ -74,7 +74,10 @@ Breaking the `jq` invocation down, we have:
 
 Notice the use of the `|` symbol too - the output of `.workflow_runs[]` is piped into the selection of properties, and the output of that is piped further into the call to the builtin `@tsv` mechanism.
 
-I ended up [using this approach](https://github.com/qmacro/dotfiles/blob/230c6df494f239e9d1762794943847816e1b7c32/scripts/dwr#L21-L38), but in a slightly expanded way, using a couple of helper functions to make the values for the `.created_at` property easier to read (for example 2021-03-26T09:10:11Z -> 2021-03-26 09:10:11), and to convert the values for the `.conclusion` property into simpler and shorter terms:
+I ended up [using this approach](https://github.com/qmacro/dotfiles/blob/230c6df494f239e9d1762794943847816e1b7c32/scripts/dwr#L21-L38), but in a slightly expanded way, using a couple of helper functions:
+
+* one to make the values for the `.created_at` property easier to read (for example changing "2021-03-26T09:10:11Z" into "2021-03-26 09:10:11")
+* the other to convert the values for the `.conclusion` property into simpler and shorter terms
 
 ```jq
 def symbol:
