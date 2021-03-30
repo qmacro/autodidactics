@@ -6,7 +6,7 @@ date: '2021-03-30 08:49:14'
 
 _TIL how to use the YouTube API to upload a video, with `curl`, using a two-phase approach._
 
-I'm becoming more familiar with the YouTube API surface area, and a task recently required me to look into an efficient way of uploading videos to a YouTube channel. While I managed the upload technically, it was ultimately in vain due to a recent change to the terms of service. But it's still worth sharing the two-phase approach that I was able to take.
+I'm becoming more familiar with the YouTube API surface area, and a task recently required me to look into an efficient way of uploading videos to a YouTube channel. While I managed the upload technically, it was ultimately in vain due to a recent [change to the terms of service](https://developers.google.com/youtube/v3/revision_history#release_notes_07_28_2020). But it's still worth sharing the two-phase approach that I was able to take.
 
 The YouTube Data API has a [Videos: insert](https://developers.google.com/youtube/v3/docs/videos/insert) facility. It's worth reading through this, and, if you get the chance, through other areas of the API, because they're quite similar, and what appeared initially a little overwhelming to me has become more familiar.
 
@@ -100,11 +100,11 @@ Here's a slightly redacted snippet of the HTTP request and response:
 < server: UploadServer
 ```
 
-While there are a couple of odd aspects to that HTTP response (see below), the key header that we're looking for is `location`. The URL there is the one to which we must now send the binary data of the video.
+While there are a couple of odd aspects to that HTTP response (see below), what we're looking for here is the Location header. The URL there is the one to which we must now send the binary data of the video.
 
 **Sending the binary data**
 
-In the first phase we sent the JSON representation of the video resource, the video's metadata, effectively. In this second phase we now send the video content itself, to the URL in the `Location` header in the first phase's response.
+In the first phase we sent the JSON representation of the video resource, the video's metadata, effectively. In this second phase we now send the video content itself, to the URL in the Location header in the first phase's response.
 
 With `curl`, sending binary data in a file is easier than you think:
 
