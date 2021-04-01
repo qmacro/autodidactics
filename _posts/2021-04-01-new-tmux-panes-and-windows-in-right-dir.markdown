@@ -1,10 +1,10 @@
 ---
 layout: post
-title: New tmux panes and windows in the dir I want
+title: New tmux panes and windows in the right directory
 date: '2021-04-01 12:03:50'
 ---
 
-_I finally got round to looking into how to be in charge of the directory I'm placed in when I create a new window or pane in `tmux`. Here's what I did._
+_I finally got round to looking into how to be in the "right" directory when I create a new window or pane in `tmux`. Here's what I did._
 
 I've been starting multiple `tmux` sessions, one for each project I'm working on, and ensuring that I'm in the "right" base directory for each of those projects before actually creating the corresponding `tmux` session. That way, each new window or pane I open places me in that project's base directory. Which isn't too bad.
 
@@ -31,20 +31,19 @@ bind '\' split-window -h -c "#{pane_current_path}"
 bind C new-window
 bind '_' split-window
 bind '|' split-window -h
-set -g mouse
 ```
 
-Basically I'm now set up to enjoy new behaviour (opening new windows and panes in the current working directory) when I use the keys I normally use:
+Basically I'm now set up to enjoy the new behaviour (opening new windows and panes in the current working directory) when I use the keys I normally use:
 
 * `c` - new window
 * `-` - new vertically split pane
-* '\' - new horizontally split pane
+* `\` - new horizontally split pane
 
 But I've added three extra bindings in case I want the old behaviour, bindings to the "shifted" version of those keys:
 
 * `C` - new window
 * `_` - new vertically split pane
-* '|' - new horizontally split pane
+* `|` - new horizontally split pane
 
 I've not found myself using these extra bindings for the old behaviour yet, and I'll probably end up removing them.
 
