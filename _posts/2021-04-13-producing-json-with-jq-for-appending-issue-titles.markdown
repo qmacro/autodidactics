@@ -8,11 +8,13 @@ _I learned how to use `jq` to **produce** JSON, while writing a script to enhanc
 
 In my [Thinking Aloud](https://github.com/qmacro/thinking-aloud) journal, the entries are issues in a GitHub repository. To [reduce friction](https://github.com/qmacro/thinking-aloud/issues/1) I decided to just use the current date and time for the journal entry title.
 
-That's worked fine, but in the overview of the issues it wasn't really practical to pick out the one I wanted to read or edit, because all I had to go on was the timestamp. Of course, I could scan the [recent entries](https://github.com/qmacro/thinking-aloud/blob/main/recent.md) but that will quickly become a little limiting as the number of journal entries grows.
+That's worked fine, but in the overview of the issues it wasn't really practical to pick out the one I wanted to read or edit, because all I had to go on was the timestamp. Of course, I could scan the [recent entries](https://github.com/qmacro/thinking-aloud/blob/main/recent.md) but that would quickly become a little limiting as the number of journal entries grows.
 
-In a small script [preptweet](https://github.com/qmacro/thinking-aloud/blob/main/preptweet), used when automatically tweeting about new entries, I was extracting the first 50 characters from the body and using that in the tweet. You can see an example in [this tweet](https://twitter.com/qmacro/status/1380500800879919105) - "I've been thinking about field naming conventions today …". I thought this would be a useful string to have in the journal entry (issue) titles too, so I wrote a script [appendtitle](https://github.com/qmacro/thinking-aloud/blob/main/appendtitle) that would do that for me for the existing issues. I have yet to decide how to modify the process of creating a new journal entry (I could just have this script run as a separate job step in the [workflow](https://github.com/qmacro/thinking-aloud/blob/main/.github/workflows/process-new-entry.yaml) I already have, for example).
+In a small script [preptweet](https://github.com/qmacro/thinking-aloud/blob/main/preptweet), used when automatically tweeting about new entries, I was extracting the first 50 characters from the body and using that in the tweet. You can see an example in [this tweet](https://twitter.com/qmacro/status/1380500800879919105) - "I've been thinking about field naming conventions today …".
 
-[appendtitle](https://github.com/qmacro/thinking-aloud/blob/main/appendtitle) contains essentially a single incantation, deliberately so, in my journey to practise my scripting. It's not the most readable but it helps me think about pipelining.
+I thought this would be a useful string to have in the journal entry (issue) titles too, so I wrote a script [appendtitle](https://github.com/qmacro/thinking-aloud/blob/main/appendtitle) that would do that for me for the existing issues. I have yet to decide how to modify the process of creating a new journal entry (I could just have this script run as a separate job step in the [workflow](https://github.com/qmacro/thinking-aloud/blob/main/.github/workflows/process-new-entry.yaml) I already have, for example).
+
+[appendtitle](https://github.com/qmacro/thinking-aloud/blob/main/appendtitle) contains essentially a single incantation, deliberately so, in my journey to practise my scripting. It's not the most readable but it helps me think about pipelining and how data flows through such a pipeline.
 
 I thought it might be useful to share and explain, in case others are on a similar journey. In it, I'll show how I used `jq` to cleanly _produce_ JSON - I normally _consume_ JSON with `jq`, so this was a nice departure.
 
@@ -41,7 +43,7 @@ Here's a breakdown, by line:
 
 9: Invoke the GitHub API with `gh` to retrieve the open issues representing journal entries.
 
-10: Use `gh`'s `--jq` switch to pass a script to pull out the number, current title and first \<length\> characters from the body (plus an elipsis to denote an elision). Output these values in tab-separated format.
+10: Use `gh`'s `--jq` flag to pass a script to pull out the issue number, current title & first \<length\> characters from the body (plus an ellipsis to denote an elision). Output these values in tab-separated format.
 
 So far, here's typical output produced from lines 9 and 10:
 
@@ -51,11 +53,11 @@ So far, here's typical output produced from lines 9 and 10:
 15      2021-04-07 09:04:01 Does it make sense to create a workflow to clean u…
 ```
 
-Those are tab characters between the three columns (number, timestamp and text).
+Those are tab characters between the three columns number, timestamp and text.
 
-Continuing:
+Continuing on:
 
-11: The output produced is passed via `grep` to check for a timestamp (nnnn-nn-nn nn:nn:nn) bounded on either side with tab characters (\\t). This ensures that only those entries with a title that is (still) only a timestamp are processed.
+11: The output produced is passed via `grep` to check for a timestamp (nnnn-nn-nn nn:nn:nn) bounded on either side with tab characters (\\t). This ensures that only those entries with a title that is (still) only a timestamp are processed (In constructing the pattern, I found it clearer to write out each of the `\d` digits than use something like e.g. `\d{4}` for the four-digit year).
 
 12: Rather than mess around with tabs from this point on, `sed` is used to convert each tab to a space; this will keep things simple for reading each "field" on the next line.
 
@@ -75,6 +77,6 @@ If the value of `newtitle` was "2021-04-09 13:17:08 I've been thinking about fie
 
 16: This JSON thus produced can be then supplied in the API call, again using `gh`, with the value `-` (classically denoting "take from STDIN") for the `--input` parameter.
 
-17: A short pause between API calls keeps the GitHub API endpoint sweet, and we're done!
+17: A short pause between API calls keeps the GitHub API endpoint sweet, and we're done.
 
-This is the first time I've used `jq` to produce JSON, and it feels a lot safer than messing around with quoting, and the quotes required for the JSON format itself. Thanks `jq`!
+This is the first time I've used `jq` to produce JSON, and it feels a lot safer than messing around with quoting, and the quotes required for the JSON format itself. Thanks `jq`, and of course thanks GitHub API!
