@@ -14,8 +14,8 @@ A colleague wanted to find out something about the pull request ID when a workfl
 - name: PR ID
   run: |
     IFS='/' read -r OWNER REPOSITORY <<< "$GITHUB_REPOSITORY"
-    HEADREFNAME=$(echo ${{ github.event.ref }} | awk -F'/' '{print $NF}')
-    PR_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+    HEADREFNAME=$(echo \${{ github.event.ref }} | awk -F'/' '{print $NF}')
+    PR_ID=$(curl -s -H "Authorization: Bearer \${{ secrets.GITHUB_TOKEN }}" \
       -X POST \
       -d "{\"query\": ... }" \
       "$GITHUB_GRAPHQL_URL" \
