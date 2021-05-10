@@ -120,7 +120,7 @@ HEADREFNAME=$(echo ${{ github.event.ref }} | awk -F'/' '{print $NF}')
 
 We can see that what is assigned to the `HEADREFNAME` variable is something inside this construct: `$(...)`. This is the [command substitution](https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html) construct. This allows the output of a command to be substituted in-place. In other words, whatever the output of what's expressed within the `$(...)` construct is substituted, and (in this case) assigned as the value to `HEADREFNAME`.
 
-> You may see an alternative command substitution construct in this form: ```...```; this is the older style of the construct, but the newer `$(...)` style is preferred due to some quoting complexities with the older style.
+> You may see an alternative command substitution construct in this form: `` `...` ``; this is the older style of the construct, but the newer `$(...)` style is preferred due to some quoting complexities with the older style.
 
 ### Using awk
 
