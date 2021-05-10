@@ -42,7 +42,7 @@ Let's pick this line apart.
 
 ### Using the IFS environment variable
 
-The first thing we see is `IFS='/'`. IFS is an environment variable in Bash and stands for [Input Field Separators](https://en.wikipedia.org/wiki/Input_Field_Separators) (or Internal Field Separators). Notice that "separators" is plural. Note also that some folks like to think of them as delimiters, rather than separators, but that's a debate for another time. The default value for the `IFS` environment variable is the list of different whitespace types, i.e. space, tab and newline.
+The first thing we see is `IFS='/'`. `IFS` is an environment variable in Bash and stands for [Input Field Separators](https://en.wikipedia.org/wiki/Input_Field_Separators) (or Internal Field Separators). Notice that "separators" is plural. Note also that some folks like to think of them as delimiters, rather than separators, but that's a debate for another time. The default value for the `IFS` environment variable is the list of different whitespace types, i.e. space, tab and newline.
 
 Here, we only want to split on `/` characters, rather than on any whitespace characters.
 
