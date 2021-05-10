@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Unpacking tips from a GitHub Actions workflow
+title: Unpacking Bash shell tips from a GitHub Actions workflow
 date: '2021-04-28 09:50:16'
 ---
 
