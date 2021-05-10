@@ -10,7 +10,8 @@ I don't know about you, but I find value in staring at other people's shell acti
 
 A colleague wanted to find out something about the pull request ID when a workflow was triggered. This is a shortened version of what was shared:
 
-{{```yaml
+{% raw %}
+```yaml
 - name: PR ID
   run: |
     IFS='/' read -r OWNER REPOSITORY <<< "$GITHUB_REPOSITORY"
@@ -22,7 +23,8 @@ A colleague wanted to find out something about the pull request ID when a workfl
       jq '.data.repository.pullRequests.nodes[].number' \
     )
   shell: bash
-``` | markdownify }}
+```
+{% endraw %}
 
 I've omitted the detail of the API call being made with `curl`, partly because it's not relevant, and partly because it's a GraphQL call and extremely ugly.
 
@@ -116,11 +118,13 @@ We can see that what is assigned to the `HEADREFNAME` variable is something insi
 
 So what is the command that is producing the output that will be substituted and assigned to the `HEADREFNAME` variable here? Let's have a look:
 
+{% raw %}
 ```bash
 echo ${{ github.event.ref }} | awk -F'/' '{print $NF}')
 ```
+{% endraw %}
 
-Remember that the definition context here is a GitHub Actions workflow definition. This is where the `${{ ... }}` comes from - it's not a shell expression; rather, it's an [expression in the workflow definition format](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions). It basically means that the value of the property `github.event.ref` is substituted; this is before the line is executed by Bash.
+Remember that the definition context here is a GitHub Actions workflow definition. This is where the {% raw %}`${{ ... }}`{% endraw %} comes from - it's not a shell expression; rather, it's an [expression in the workflow definition format](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions). It basically means that the value of the property `github.event.ref` is substituted; this is before the line is executed by Bash.
 
 Assuming for now that the value of `github.event.ref` is indeed `refs/head/main` this amounts to:
 
