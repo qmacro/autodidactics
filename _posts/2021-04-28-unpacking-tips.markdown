@@ -10,11 +10,11 @@ I don't know about you, but I find value in staring at other people's shell acti
 
 A colleague wanted to find out something about the pull request ID when a workflow was triggered. This is a shortened version of what was shared:
 
-```yaml
+{{```yaml
 - name: PR ID
   run: |
     IFS='/' read -r OWNER REPOSITORY <<< "$GITHUB_REPOSITORY"
-    HEADREFNAME=$(echo ${{{ github.event.ref }}} | awk -F'/' '{print $NF}')
+    HEADREFNAME=$(echo ${{ github.event.ref }} | awk -F'/' '{print $NF}')
     PR_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
       -X POST \
       -d "{\"query\": ... }" \
@@ -22,7 +22,7 @@ A colleague wanted to find out something about the pull request ID when a workfl
       jq '.data.repository.pullRequests.nodes[].number' \
     )
   shell: bash
-```
+``` | markdownify }}
 
 I've omitted the detail of the API call being made with `curl`, partly because it's not relevant, and partly because it's a GraphQL call and extremely ugly.
 
