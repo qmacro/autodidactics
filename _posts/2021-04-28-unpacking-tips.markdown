@@ -58,7 +58,7 @@ Next we have the actual execution, in this case of the `read` builtin: `read -r 
 
 Looking at what `read --help` tells us, we see that it reads a line from STDIN and splits it into fields. Note the phase "a line" - it only reads one line, so if you have multiple lines, you'll need to execute `read` in a loop (a common idiom is to use a `while` loop here). Next, then, is the `-r` option, which prevents any backslashes from escaping characters. Often with input you'll find control characters, such as tab or newline, written in an escaped form, i.e. `/t` and `\n` respectively. In this instance, this is not desired - any actual backslash should be interpreted directly as such.
 
-Knowing that the value in `$GITHUB_REPOSITORY` is going to be an owner and a repository name, stuck together with a `/` character (such as "qmacro/dotfiles") we can understand what the variable names `OWNER` and `REPOSITORY` are likely to receive, given the temporary assignment of a `/` to `IFS`.
+Knowing that the value in `$GITHUB_REPOSITORY` is going to be an owner and a repository name, stuck together with a `/` character (such as "octocat/Hello-World") we can understand what the variable names `OWNER` and `REPOSITORY` are likely to receive, given the temporary assignment of a `/` to `IFS`.
 
 ### Using a here string
 
