@@ -74,7 +74,7 @@ $ producer | consumer
 
 Whatever `producer` emits to STDOUT, that's what `consumer` receives on STDIN.
 
-There are other ways to supply data to `consumer. One way is to use "redirection", which is useful if you want to use files:
+There are other ways to supply data to `consumer`. One way is to use "redirection", which is useful if you want to use files:
 
 
 ```bash
