@@ -128,7 +128,7 @@ So what is the command that is producing the output that will be substituted and
 
 {% raw %}
 ```bash
-echo ${{ github.event.ref }} | awk -F'/' '{print $NF}')
+echo ${{ github.event.ref }} | awk -F'/' '{print $NF}'
 ```
 {% endraw %}
 
