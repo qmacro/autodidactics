@@ -20,7 +20,7 @@ A colleague wanted to find out something about the pull request ID when a workfl
       -X POST \
       -d "{\"query\": ... }" \
       "$GITHUB_GRAPHQL_URL" \
-      jq '.data.repository.pullRequests.nodes[].number' \
+      | jq '.data.repository.pullRequests.nodes[].number' \
     )
   shell: bash
 ```
